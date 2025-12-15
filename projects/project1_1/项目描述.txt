@@ -1,0 +1,31 @@
+实践一：基于 LangChain 构建一个多任务问答助手
+输入输出定义：
+- 输入：用户自然语言问题（如：“帮我查一下今天的天气”、“最近的新闻有哪些？”）
+- 输出：准确答案 + 使用了哪些工具（如天气API、新闻API）
+- 扩展项：支持历史对话上下文、缓存结果、错误处理
+关键挑战：
+- 如何判断是否需要调用工具？
+- 如何防止无限递归或死循环？
+- 如何记录对话状态？
+
+
+高德天气 API
+https://restapi.amap.com/v3/weather/weatherInfo?parameters
+请求方式 GET 
+key:f3a328d8176dbfe490b1f0d12310d754
+城市列表  AMap_adcode_citycode.xlsx
+
+
+
+搜索 API
+Tavily Search API
+API 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
+
+请求方式
+# To install: pip install tavily-python
+from tavily import TavilyClient
+client = TavilyClient("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")
+response = client.search(
+    query=""
+)
+print(response)
